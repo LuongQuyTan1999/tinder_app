@@ -1,8 +1,8 @@
-import React from "react";
-import "./App.css";
-import Header from "./components/Header";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import TinderCards from "./pages/TinderCards";
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import './App.css'
+import Header from './components/Header'
+import TinderCards from './pages/TinderCards'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         </Switch>
       </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

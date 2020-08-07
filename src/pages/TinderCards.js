@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import TinderCard from "react-tinder-card";
-import styled from "styled-components";
-import database from "../firebase";
+import React, { useState, useEffect } from 'react'
+import TinderCard from 'react-tinder-card'
+import styled from 'styled-components'
+import database from '../firebase'
 
 const StyledTinderCards = styled.div`
   .card {
@@ -23,43 +23,41 @@ const StyledTinderCards = styled.div`
   .swipe {
     position: absolute;
   }
-`;
+`
 
 function TinderCards() {
-  const [people, setPeople] = useState([]);
+  const [people, setPeople] = useState([])
   useEffect(() => {
-    database.collection("people").onSnapshot((snapshot) => {
-      setPeople(snapshot.docs.map((doc) => doc.data()));
-    });
-  }, []);
+    database.collection('people').onSnapshot((snapshot) => {
+      setPeople(snapshot.docs.map((doc) => doc.data()))
+    })
+  }, [])
   const onSwipe = (direction) => {
-    console.log("You swiped: " + direction);
-  };
+    console.log(`You swiped: ${direction}`)
+  }
 
   const onCardLeftScreen = (myIdentifier) => {
-    console.log(myIdentifier + " left the screen");
-  };
+    console.log(`${myIdentifier} left the screen`)
+  }
   return (
     <StyledTinderCards>
       <div className="tinderCards__cardContainer">
         {people.map((person) => (
           <TinderCard
             onSwipe={onSwipe}
-            onCardLeftScreen={() => onCardLeftScreen("fooBar")}
-            preventSwipe={["right", "left"]}
+            onCardLeftScreen={() => onCardLeftScreen('fooBar')}
+            preventSwipe={['right', 'left']}
             className="swipe"
-            key={person.name}
-          >
+            key={person.name}>
             <div
               className="card"
-              style={{ backgroundImage: `url(${person.url})` }}
-            >
+              style={{ backgroundImage: `url(${person.url})` }}>
               <h3>{person.name}</h3>
             </div>
           </TinderCard>
         ))}
       </div>
     </StyledTinderCards>
-  );
+  )
 }
-export default TinderCards;
+export default TinderCards
