@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import styled from "styled-components";
-import image1 from "../assets/images/image1.jpg";
-import image2 from "../assets/images/image2.jpg";
+import database from "../firebase";
 
 const StyledTinderCards = styled.div`
   .card {
@@ -27,16 +26,12 @@ const StyledTinderCards = styled.div`
 `;
 
 function TinderCards() {
-  const [people, setPeople] = useState([
-    {
-      name: "Luong Quy Tan",
-      url: image1,
-    },
-    {
-      name: "Nguyen Ngoc Nhu Quynh",
-      url: image2,
-    },
-  ]);
+  const [people, setPeople] = useState([]);
+  useEffect(() => {
+    database.collection("people").onSnapshot((snapshot) => {
+      setPeople(snapshot.docs.map((doc) => doc.data()));
+    });
+  }, []);
   const onSwipe = (direction) => {
     console.log("You swiped: " + direction);
   };
