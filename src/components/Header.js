@@ -24,7 +24,7 @@ function Header() {
     <StyledHeader>
       <IconButton>
         <PersonIcon fontSize="large" className="header__icon" />
-      </IconButton> 
+      </IconButton>
       <img src={LogoTinder} alt="Logo tinder" className="header__logo" />
       <IconButton>
         <ForumIcon fontSize="large" className="header__icon" />
