@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "tinder-app-132d1",
-    "staging": "tinder-app-132d1"
+    "default": "tinder-app-132d1"
   }
 }
